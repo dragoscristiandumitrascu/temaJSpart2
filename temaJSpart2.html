@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+
+        //"getDigits" care primeste un sir de caractere si returneaza cifrele din sirul respectiv
+        console.log('1. "getDigits" care primeste un sir de caractere si returneaza cifrele din sirul respectiv')
+        function getDigits(array){
+            var j=0;
+            var array2 = [];
+            for (var i=0; i<array.length; i++){
+                for (var n=0; n<=9; n++){
+                    if (array[i]==n && array[i]!=" "){
+                        array2[j]=n;
+                        j++;
+                    }
+                }
+            }
+            return array2;
+        }
+
+        console.log(getDigits("Volv10 XC777"))
+
+        //2.  "getLetters" care primeste un sir de caractere si returneaza doar literele din sirul respectiv
+        console.log('2. "getLetters" care primeste un sir de caractere si returneaza doar literele din sirul respectiv')
+        function findDigits(x){
+            for (var s=0; s<=9; s++){
+                if (s==x){
+                    return 1;
+                }
+            }
+            return 0;
+        }
+        function getLetters(array){
+            var j=0;
+            array2 = [];
+            for (var i=0; i<array.length; i++){
+                if (findDigits(array[i])==0){
+                    array2[j]=array[i];
+                    j++;
+                }
+            }
+            return array2;
+        }
+        console.log(getLetters("Volv10 XC123456789"))
+
+        // 3. "getFirst5Letters" care primeste un sir de caractere si returneaza primele 5 litere(daca exista)
+        console.log('"getFirst5Letters" care primeste un sir de caractere si returneaza primele 5 litere(daca exista)')
+        function getFirst5Letters(array){           
+            var j=0;
+            array2 = [];
+            for (var i=0; i<array.length; i++){
+                if (findDigits(array[i])==0){
+                    array2[j]=array[i];
+                    j++;
+                    if (j===5) return array2;
+                }
+            }
+            return array2;
+        }
+        console.log(getFirst5Letters("VVVVVolvoooooo10 XC123456789"))
+
+        // 4. "concatenate" care primeste o lista de siruri de caractere si returneaza sirurile concatenate
+        function concatenate (array){
+            var array2 = [];
+            for (var i=0; i<array.length; i++){
+                array2 = array2 + array[i];
+            }
+            return array2;
+        }
+        console.log(concatenate(["saab", "volvo", "dacia"]))
+
+        //5. "getAllDigits" care primeste o lista de siruri de caractere si returneaza cifrele din toate sirurile
+        console.log('"getAllDigits" care primeste o lista de siruri de caractere si returneaza cifrele din toate sirurile')
+        function getAllDigits(array){
+            var array2 = [];
+            var x=0;
+            for (var i=0; i<array.length; i++){ 
+                for (var j=0; j<array[i].length; j++){
+                    if (findDigits(array[i][j])==1){
+                        array2[x]=array[i][j];
+                        x++;
+                    }
+                }
+            }
+            return array2;
+        }
+        console.log(getAllDigits(["vol1vo", "d2ci3", "n4s5an"]))
+
+        //6. "invertAllStrings" care primeste o lista de siruri de caractere si returneaza lista de siruri de caractere inversate
+        console.log('"invertAllStrings" care primeste o lista de siruri de caractere si returneaza lista de siruri de caractere inversate')
+        function reverse (array){
+            var array2 = [];
+            var x = array.length-1;
+            for (var i=0; i<array.length; i++){
+                array2 = array2 + array[x];
+                x--;
+            }
+            return array2;
+        }
+        console.log(reverse("dacia"))
+
+        function invertAllStrings (array){
+            var array2 = [];
+            for (var i=0; i<array.length; i++){
+                array2 = array2 + reverse(array[i]);
+            }
+            return array2;
+        }
+        console.log(invertAllStrings(["volvo", "dacia", "nissan"]))
+
+        //7. Calculeaza factorialul unui numar ("factorial")
+        function factorial (x){
+            var produs = 1;
+            for (var i=2; i<=x; i++){
+                produs = produs * i;
+            }
+            return produs;
+        }
+        console.log(factorial(4))
+
+        //8. Calculeaza cel mai mare divizor comun al 2 numere ("cmmdc")
+        console.log('Calculeaza cel mai mare divizor comun al 2 numere ("cmmdc")')
+        function cmmdc (x, y){
+            var divizor = 0;
+            if (x<y){
+                for (var i=1; i<=x; i++){
+                    if (x%i===0 && y%i===0){
+                        divizor = i;
+                    }
+                }
+            } else for (var j=1; j<=y; j++){
+                if (x%j===0 && y%j===0){
+                    divizor = j;
+                }
+            }
+            return divizor;
+        }
+
+        console.log(cmmdc(10, 100))
+
+        //9. Calculeaza cel mai mic multiplu comun al 2 numere ("cmmmc")
+        console.log('Calculeaza cel mai mic multiplu comun al 2 numere ("cmmmc")')
+        function cmmmc (x, y){
+            for (var i=x; i<Infinity; i++){
+                if (i%x===0 && i%y===0) return i;
+            }
+        }
+        console.log(cmmmc(5, 10))
+
+        //10. Returneaza un array care sa contina toti divizorii unui numar (ex pentru 64: trebuie sa returneze [2,4,8,16,32]) ("divizori")
+        console.log('Returneaza un array care sa contina toti divizorii unui numar (ex pentru 64: trebuie sa returneze [2,4,8,16,32]) ("divizori")')
+        function divizori(x){
+            var array = [];
+            for (var i=0; i<x; i++){
+                if (x%i===0){
+                    array = array + i;
+                    array = array + " ";
+                }
+            }
+            return array;
+        }
+        console.log(divizori(75))
+
+        //11. O functie care verifica daca un numar este palindrom (ex: 121, 1234321) ("palindrom")
+        console.log('O functie care verifica daca un numar este palindrom (ex: 121, 1234321) ("palindrom")')
+        function invers(x){
+            var inv=0;
+            while(x>0){
+                inv=inv*10 + x%10;
+                x=Math.floor(x/10);
+            }
+            return inv;
+        }
+        function palindrom(x){
+            if (x===invers(x)){
+                return true;
+            } else return false;
+        }
+        console.log(palindrom(12211))
+
+        //12. O functie care sorteaza numerele pare dintr-un sir de numere primit ca parametru. ("sort")
+        console.log('O functie care sorteaza numerele pare dintr-un sir de numere primit ca parametru. ("sort")')
+        function sort(array){
+            var array2 = [];
+            var counter = 0;
+            for (var i=0; i<array.length; i++){
+                if (array[i]%2===0){
+                    array2[counter]=array[i];
+                    counter++;
+                }
+            }
+            var copy;
+            for (var j=0; j<counter; j++){
+                for (var k=0; k<counter; k++){
+                    if (array2[k]>array2[k+1]){
+                        copy=array2[k+1];
+                        array2[k+1]=array2[k];
+                        array2[k]=copy;
+                    }
+                }
+            }
+            counter=0;
+            counterPoz=0;
+            for (var l=0; l<array.length; l++){
+                if (array[l]%2===0){
+                    array[l]=array2[counter];
+                    counter++;
+                }
+            }
+            return array;
+        }
+        console.log(sort([9, 8, 7, 6, 5, 4, 3, 2, 1]))
+
+        //13. O functie care primeste ca parametru un array de numere. Aceasta sorteaza ascendent numerele pare si
+        // descendent numerele impare, in cadrul aceluiasi array primit ca parameru. ("sortAscDesc")
+        console.log("Pare - ascendent; Impare - descendent")
+        function arrangeAsc(array){
+            var copy;
+            var array2 = [];
+            for (var i=0; i<array.length; i++){
+                for (var j=0; j<array.length; j++){
+                    if (array[j]>array[j+1]){
+                        copy=array[j+1];
+                        array[j+1]=array[j];
+                        array[j]=copy;
+                    }
+                }
+            }
+            return array;
+        }
+        function arrangeDsc(array){
+            var copy;
+            var array2 = [];
+            for (var i=0; i<array.length; i++){
+                for (var j=0; j<array.length; j++){
+                    if (array[j]<array[j+1]){
+                        copy=array[j+1];
+                        array[j+1]=array[j];
+                        array[j]=copy;
+                    }
+                }
+            }
+            return array;
+        }
+        function sortAscDesc(array){
+            var arrayPar = [];
+            var arrayImpar = [];
+            var counterPar = 0;
+            var counterImpar = 0;
+            for (var i=0; i<array.length; i++){
+                if (array[i]%2===0){
+                    arrayPar[counterPar]=array[i];
+                    counterPar++;
+                } else {
+                    arrayImpar[counterImpar]=array[i];
+                    counterImpar++;
+                }
+            }
+            arrayPar=arrangeAsc(arrayPar);
+            arrayImpar=arrangeDsc(arrayImpar);
+            counterPar = 0;
+            counterImpar = 0;
+            for (var j=0; j<array.length; j++){
+                if (array[j]%2===0){
+                    array[j]=arrayPar[counterPar];
+                    counterPar++;
+                } else {
+                    array[j]=arrayImpar[counterImpar];
+                    counterImpar++;
+                }
+            }
+            return array;                    
+        }
+        console.log(sortAscDesc([1,8,3,6,5,4,7,2,9]))
+
+        /*O functie care primeste 2 parametri(un array si un numar). 
+        Folosind binary search verificati daca numarul primit ca parametru se gaseste in array. ("binarySearch")*/
+        function binarySearch(array, x){
+            var copy;
+            for (var i=0; i<array.length; i++){
+                for (var j=0; j<array.length; j++){
+                    if (array[j]>array[j+1]){
+                        copy=array[j+1];
+                        array[j+1]=array[j];
+                        array[j]=copy;
+                    }
+                }
+            }
+            var low = 0;
+            var high = array.length-1;
+            var mid;
+            while (low <= high){
+                mid = Math.floor((low+high)/2);
+                if (array[mid]===x){
+                    return "Found";
+                } else if (array[mid] < x) low = mid + 1;
+                         else high = mid - 1;            
+                }
+            return "Not found";    
+        }
+        console.log(binarySearch([9,8,7,6,5,4,3,2,1], 111))    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
